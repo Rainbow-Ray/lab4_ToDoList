@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:top="15dp"
+        android:height="5dp"
+        android:width="35dp"
+        android:drawable="@drawable/plus_horizontal">
+    </item>
+    <item
+        android:left="15dp"
+        android:height="35dp"
+        android:width="5dp"
+        android:drawable="@drawable/plus_vertical">
+    </item>
+</layer-list>
