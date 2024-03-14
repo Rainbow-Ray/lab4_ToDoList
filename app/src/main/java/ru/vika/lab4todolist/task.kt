@@ -11,7 +11,8 @@ import java.io.File
 data class task (
     var id : Int,
     var name: String,
-    var description: String
+    var description: String,
+    var done: Boolean
 ){
     fun toJson(): String{
         return Json.encodeToString(this)
