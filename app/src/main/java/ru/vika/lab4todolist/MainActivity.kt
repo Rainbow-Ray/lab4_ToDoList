@@ -23,15 +23,28 @@ class MainActivity : AppCompatActivity() {
 
         val recyclerView : RecyclerView = findViewById(R.id.recycleView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = MyRecycleAdapter(listOfTasks)
+        recyclerView.adapter = MyRecycleAdapter(listOfTasks,
+            ({task ->
+        val intent : Intent = Intent(this, viewTaskActivity::class.java)
+        intent.putExtra("id", task.id)
+        startActivity(intent)})
+        )
 
-        val adapter = MyRecycleAdapter(listOfTasks)
-        adapter.onItemClick = {
-            task ->
-            val intent : Intent = Intent(this, viewTaskActivity::class.java)
-            intent.putExtra("id", task.id)
-            startActivity(intent)
-        }
+//        val onCardClick ={ task ->
+//            val intent : Intent = Intent(this, viewTaskActivity::class.java)
+//            intent.putExtra("id", task.id)
+//            startActivity(intent)}
+
+
+
+
+//        val adapter = MyRecycleAdapter(listOfTasks)
+//        adapter.onItemClick = {
+//            task ->
+//            val intent : Intent = Intent(this, viewTaskActivity::class.java)
+//            intent.putExtra("id", task.id)
+//            startActivity(intent)
+//        }
 
         val addTaskButton = findViewById<ImageButton>(R.id.addTaskbutton)
         addTaskButton.setOnClickListener {

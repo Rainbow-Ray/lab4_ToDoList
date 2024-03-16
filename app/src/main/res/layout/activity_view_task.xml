@@ -64,10 +64,13 @@
 
     <View
         android:id="@+id/divider3"
-        android:layout_width="411dp"
+        android:layout_width="0dp"
         android:layout_height="1dp"
+        android:layout_marginTop="80dp"
         android:background="?android:attr/listDivider"
-        tools:layout_editor_absoluteY="80dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/nameLabeltextView2"
@@ -103,7 +106,7 @@
         android:includeFontPadding="false"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:text="Добавить"
+        android:text="Выполнить"
         android:textColor="@color/white"
         android:textSize="30sp"
         app:cornerRadius="5dp"

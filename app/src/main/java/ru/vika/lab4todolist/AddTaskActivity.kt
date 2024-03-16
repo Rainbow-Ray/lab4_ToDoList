@@ -32,7 +32,7 @@ class AddTaskActivity : AppCompatActivity() {
                 val listOfTasks = fileMethod.fileToList(file)
                 val newId: Int
                 if (listOfTasks.size > 0){
-                    newId = listOfTasks.last().id
+                    newId = listOfTasks.last().id + 1
                 }
                 else {
                     newId = 0
