@@ -19,7 +19,8 @@ class MainActivity : AppCompatActivity() {
 
         val fileMethod = fileMethods()
         val fileName = "tasks.json"
-        val listOfTasks = fillTasks(fileName, fileMethod)
+        val listOfTasks = fillTasks(fileName, fileMethod).sortedBy { task: task -> task.done }
+
 
         val recyclerView : RecyclerView = findViewById(R.id.recycleView)
         recyclerView.layoutManager = LinearLayoutManager(this)

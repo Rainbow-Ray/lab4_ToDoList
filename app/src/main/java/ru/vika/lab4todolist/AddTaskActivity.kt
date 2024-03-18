@@ -6,20 +6,27 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.google.android.material.textfield.TextInputEditText
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
-import java.io.File
 
 class AddTaskActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_task)
+        setContentView(R.layout.add_task_no_scrolllayout)
 
         val fileMethod = fileMethods()
         val nameTextEdit = findViewById<EditText>(R.id.nameInputeditText)
         val descTextEdit = findViewById<EditText>(R.id.descInputeditTextTextMultiLine)
 
+        nameTextEdit.setOnFocusChangeListener { v, hasFocus ->
+            if(hasFocus == false){
+                if(nameTextEdit.text.length < 1){
+                    nameTextEdit.hint = "Введите название дела"
+                    nameTextEdit.setHintTextColor(getColor(R.color.bright_pink))
+                }
+
+            }
+
+        }
+        
         findViewById<Button>(R.id.backToMenubutton).setOnClickListener {
             toMainMenu()
         }
@@ -39,7 +46,7 @@ class AddTaskActivity : AppCompatActivity() {
                 }
 
                 val newTask = task(newId, nameTextEdit.text.toString(), descTextEdit.text.toString(), false)
-                fileMethod.saveToFile(file,newTask)
+                fileMethod.AddTaskAndSaveToFile(file,newTask)
                 toMainMenu()
             }
         }

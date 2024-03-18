@@ -33,9 +33,12 @@ class fileMethods {
         return file
     }
 
-    fun saveToFile(file: File, task: task){
+    fun AddTaskAndSaveToFile(file: File, task: task){
         var listOfTask = fileToList(file)
         listOfTask= listOfTask.plus(task)
         file.writeText(Json.encodeToString(listOfTask))
+    }
+    fun saveListToFile(file: File, list: List<task>){
+        file.writeText(Json.encodeToString(list))
     }
 }

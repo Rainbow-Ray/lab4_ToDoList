@@ -97,7 +97,7 @@
         app:layout_constraintTop_toBottomOf="@+id/viewNametextView" />
 
     <Button
-        android:id="@+id/saveTaskbutton2"
+        android:id="@+id/doTaskbutton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"

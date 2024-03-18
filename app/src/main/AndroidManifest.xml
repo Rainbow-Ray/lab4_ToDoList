@@ -16,6 +16,7 @@
             android:name=".viewTaskActivity"
             android:exported="false" />
         <activity
+            android:windowSoftInputMode="adjustResize"
             android:name=".AddTaskActivity"
             android:exported="false" />
         <activity
