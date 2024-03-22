@@ -111,24 +111,6 @@
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@+id/nameInputeditText" />
 
-            <EditText
-                android:id="@+id/descInputeditTextTextMultiLine"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:ems="10"
-                android:fontFamily="@font/sf_compact_display_reg"
-                android:gravity="start|top"
-                android:hint="Краткое описание"
-                android:inputType="textMultiLine"
-                android:isScrollContainer="true"
-                android:maxLines="10"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                app:layout_constraintStart_toStartOf="@+id/guideline"
-                app:layout_constraintTop_toBottomOf="@+id/descLabeltextView" />
-
             <TextView
                 android:id="@+id/neededtextView"
                 android:layout_width="wrap_content"
@@ -168,6 +150,39 @@
                 app:layout_constraintBottom_toTopOf="@+id/divider2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/datePickerButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/white"
+                android:text="FHBBDDD"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toStartOf="@id/guideline2"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+            <EditText
+                android:id="@+id/descInputeditTextTextMultiLine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:ems="10"
+                android:fontFamily="@font/sf_compact_display_reg"
+                android:gravity="start|top"
+                android:hint="Краткое описание"
+                android:inputType="textMultiLine"
+                android:isScrollContainer="true"
+                android:maxLines="10"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/descLabeltextView"
+                app:layout_constraintVertical_bias="0.0" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
