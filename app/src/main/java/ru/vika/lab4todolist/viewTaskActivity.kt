@@ -11,7 +11,7 @@ class viewTaskActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_task)
-
+//
         val fileMethod = fileMethods()
         val taskNameText = findViewById<TextView>(R.id.viewNametextView)
         val taskDescText = findViewById<TextView>(R.id.viewDesctextView)

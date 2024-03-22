@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         val fileMethod = fileMethods()
         val fileName = "tasks.json"
-        val listOfTasks = fillTasks(fileName, fileMethod).sortedBy { task: task -> task.done }
+        val listOfTasks = fillTasks(fileName, fileMethod).sortedWith(compareBy({task: task ->  task.done}).thenByDescending {task: task -> task.id })
 
 
         val recyclerView : RecyclerView = findViewById(R.id.recycleView)
