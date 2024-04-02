@@ -1,13 +1,16 @@
 package ru.vika.lab4todolist
 
 import android.content.Context
+import android.icu.util.Calendar
+import android.text.format.DateFormat
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.io.File
+import java.util.Date
 
 
+class GoodMethods {
 
-class fileMethods {
     fun openFile(fileName : String, context : Context) : File {
         val file = File(context.filesDir, fileName)
         if(!file.exists()){
@@ -41,4 +44,32 @@ class fileMethods {
     fun saveListToFile(file: File, list: List<task>){
         file.writeText(Json.encodeToString(list))
     }
+
+    fun removeTaskAndSaveToFile(file: File, list: MutableList<task>, task:task){
+        val index = list.indexOf(task)
+        list.removeAt(index)
+        file.writeText(Json.encodeToString(list))
+    }
+
+    fun calToDate(date: String) : Array<Int>{
+        return arrayOf(date.substring(6).toInt(), date.substring(3,5).toInt()-1,date.substring(0,2).toInt())
+    }
+
+    fun isEarlier(newDate: Date): Boolean{
+        val oldDate = Calendar.getInstance()
+        oldDate.add(Calendar.DATE, -1)
+        if(newDate.before(oldDate.time)){
+            return true
+        }
+        else{
+            return false
+        }
+    }
+
+    fun getTaskById(file: File, id: Int): task?{
+        var list = fileToList(file).toMutableList()
+        var task = list.find { task -> task.id == id }
+        return task
+    }
+
 }

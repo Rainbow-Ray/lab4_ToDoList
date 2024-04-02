@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/textViewDate"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:divider="@drawable/plus_horizontal"
@@ -7,6 +8,12 @@
     android:orientation="vertical"
     android:paddingStart="15dp"
     android:paddingEnd="15dp">
+
+    <TextView
+        android:id="@+id/textViewCardDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="textEnd" />
 
     <TextView
         android:id="@+id/textViewName"
@@ -19,4 +26,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
 </LinearLayout>

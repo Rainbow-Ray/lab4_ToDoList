@@ -1,35 +1,42 @@
 package ru.vika.lab4todolist
 
 import android.app.DatePickerDialog
-import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.widget.Button
-import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.Toast
-import java.util.Date
+import android.icu.util.Calendar
 
 class AddTaskActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_task)
 
-        val fileMethod = fileMethods()
+        val methods = GoodMethods()
+
+        val fileMethod = GoodMethods()
         val nameTextEdit = findViewById<EditText>(R.id.nameInputeditText)
         val descTextEdit = findViewById<EditText>(R.id.descInputeditTextTextMultiLine)
 
         val datePickerButton = findViewById<Button>(R.id.datePickerButton)
-        val date = DateFormat.format("dd.MM.yyyy", Date())
-        datePickerButton.text = date
+        val date = Calendar.getInstance()
+        datePickerButton.text = DateFormat.format("dd.MM.yyyy", date.time)
         val dateSpinnerPick : DatePickerDialog = DatePickerDialog(this, R.style.MySpinnerDatePickerStyle)
-        dateSpinnerPick.setOnDateSetListener { view, year, month, dayOfMonth ->
-            val newDate = Date(year-1900,month, dayOfMonth)
-            datePickerButton.text = DateFormat.format("dd.MM.yyyy", newDate)
-            if(newDate.before(Date())){
 
+        dateSpinnerPick.setOnDateSetListener { view, year, month, dayOfMonth ->
+            val newDate = Calendar.getInstance()
+            newDate.set(year, month, dayOfMonth)
+            val newDataTime = newDate.time
+            datePickerButton.text = DateFormat.format("dd.MM.yyyy", newDataTime)
+
+            if(methods.isEarlier(newDataTime)){
+                datePickerButton.setTextColor(getColor(R.color.bright_pink))
+            }
+            else{
+                datePickerButton.setTextColor(getColor(R.color.black))
             }
         }
 
@@ -65,16 +72,11 @@ class AddTaskActivity : AppCompatActivity() {
                 else {
                     newId = 0
                 }
-
-                val newTask = task(newId, nameTextEdit.text.toString(), descTextEdit.text.toString(), false)
+                val newTask = task(newId, nameTextEdit.text.toString(), descTextEdit.text.toString(), datePickerButton.text.toString(), false)
                 fileMethod.AddTaskAndSaveToFile(file,newTask)
                 toMainMenu()
             }
         }
-
-
-
-
     }
     fun toMainMenu(){
         val intent : Intent = Intent(this, MainActivity::class.java)

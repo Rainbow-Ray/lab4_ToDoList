@@ -1,15 +1,13 @@
 package ru.vika.lab4todolist
 
 import android.content.Intent
+import android.icu.util.Calendar
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.serialization.encodeToString
-import java.io.File
-import kotlinx.serialization.json.Json
+import java.util.Date
 
 
 class MainActivity : AppCompatActivity() {
@@ -17,9 +15,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val fileMethod = fileMethods()
+        val fileMethod = GoodMethods()
         val fileName = "tasks.json"
-        val listOfTasks = fillTasks(fileName, fileMethod).sortedWith(compareBy({task: task ->  task.done}).thenByDescending {task: task -> task.id })
+        val listOfTasks = fillTasks(fileName, fileMethod).sortedWith(compareBy({task: task ->  task.done}).thenBy {task: task ->
+            val date = fileMethod.calToDate(task.date)
+            Date(date[0], date[1], date[2]) })
 
 
         val recyclerView : RecyclerView = findViewById(R.id.recycleView)
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun fillTasks(fileName: String, fileMethod: fileMethods): List<task>{
+    fun fillTasks(fileName: String, fileMethod: GoodMethods): List<task>{
         val file = fileMethod.openFile(fileName, this)
         val list = fileMethod.fileToList(file)
         return list
