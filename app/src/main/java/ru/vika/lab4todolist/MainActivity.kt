@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = MyRecycleAdapter(listOfTasks,
             ({task ->
-        val intent : Intent = Intent(this, viewTaskActivity::class.java)
+        val intent = Intent(this, viewTaskActivity::class.java)
         intent.putExtra("id", task.id)
         startActivity(intent)})
         )
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
         val addTaskButton = findViewById<ImageButton>(R.id.addTaskbutton)
         addTaskButton.setOnClickListener {
-            val intent : Intent = Intent(this, AddTaskActivity::class.java)
+            val intent = Intent(this, AddTaskActivity::class.java)
             startActivity(intent)
         }
 

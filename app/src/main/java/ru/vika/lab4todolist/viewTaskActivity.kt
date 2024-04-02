@@ -25,7 +25,7 @@ class viewTaskActivity : AppCompatActivity() {
             toMainMenu()
         }
 
-        var id : Int = 0
+        var id = 0
         val extras : Bundle? = intent.extras
         if (extras != null){
             id = extras.getInt("id")
@@ -77,7 +77,7 @@ class viewTaskActivity : AppCompatActivity() {
     }
 
     fun toMainMenu(){
-        val intent : Intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 

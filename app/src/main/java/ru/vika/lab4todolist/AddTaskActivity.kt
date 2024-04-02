@@ -24,7 +24,7 @@ class AddTaskActivity : AppCompatActivity() {
         val datePickerButton = findViewById<Button>(R.id.datePickerButton)
         val date = Calendar.getInstance()
         datePickerButton.text = DateFormat.format("dd.MM.yyyy", date.time)
-        val dateSpinnerPick : DatePickerDialog = DatePickerDialog(this, R.style.MySpinnerDatePickerStyle)
+        val dateSpinnerPick = DatePickerDialog(this, R.style.MySpinnerDatePickerStyle)
 
         dateSpinnerPick.setOnDateSetListener { view, year, month, dayOfMonth ->
             val newDate = Calendar.getInstance()
@@ -79,7 +79,7 @@ class AddTaskActivity : AppCompatActivity() {
         }
     }
     fun toMainMenu(){
-        val intent : Intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 }

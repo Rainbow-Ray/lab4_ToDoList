@@ -2,7 +2,6 @@ package ru.vika.lab4todolist
 
 import android.content.Context
 import android.icu.util.Calendar
-import android.text.format.DateFormat
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.io.File
@@ -58,12 +57,7 @@ class GoodMethods {
     fun isEarlier(newDate: Date): Boolean{
         val oldDate = Calendar.getInstance()
         oldDate.add(Calendar.DATE, -1)
-        if(newDate.before(oldDate.time)){
-            return true
-        }
-        else{
-            return false
-        }
+        return newDate.before(oldDate.time)
     }
 
     fun getTaskById(file: File, id: Int): task?{
