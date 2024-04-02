@@ -9,8 +9,6 @@ import android.text.format.DateFormat
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import java.util.Date
 
 class EditTask : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,11 +19,11 @@ class EditTask : AppCompatActivity() {
         val editName = findViewById<EditText>(R.id.editNametextView)
         val editDesc = findViewById<EditText>(R.id.viewDesctextView)
         val editDateButton = findViewById<Button>(R.id.editDateTextView)
-        val dateSpinnerPick : DatePickerDialog = DatePickerDialog(this, R.style.MySpinnerDatePickerStyle)
+        val dateSpinnerPick = DatePickerDialog(this, R.style.MySpinnerDatePickerStyle)
         val saveChanges = findViewById<Button>(R.id.saveChangesbutton)
         val deleteButton = findViewById<Button>(R.id.deleteTaskbutton2)
 
-        var id : Int = 0
+        var id = 0
         val extras : Bundle? = intent.extras
         if (extras != null){
             id = extras.getInt("id")
@@ -114,7 +112,7 @@ class EditTask : AppCompatActivity() {
     }
 
     fun toMainMenu(){
-        val intent : Intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 
